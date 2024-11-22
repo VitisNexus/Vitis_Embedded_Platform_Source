@@ -1,4 +1,8 @@
 # Change Logs
+## 2024.2
+- VCK190 base platform updated to use CED to generate hardware platform source code. TCL based source code is also provieded under HW folder for reference.
+- Removed BDC platforms
+- All Versal platforms updated the dtb generation scripts to make use of newly introduced system device tree flow. 
 
 ## 2023.1
 
