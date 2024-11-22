@@ -44,9 +44,9 @@ set_property platform.uses_pr  "false" [current_project]
 #setting Platform level param to have PDI in hw xsa
 set_param platform.forceEnablePreSynthPDI true
 
-#Importing Placement Files
-import_files -fileset utils_1 -norecurse ./../data/qor_scripts/prohibit_select_bli_bels_for_hold.tcl
-set_property platform.run.steps.place_design.tcl.pre [get_files prohibit_select_bli_bels_for_hold.tcl] [current_project]
+#Importing Placement Files,  removing it as got fixed with VIVADO-6557
+#import_files -fileset utils_1 -norecurse ./../data/qor_scripts/prohibit_select_bli_bels_for_hold.tcl
+#set_property platform.run.steps.place_design.tcl.pre [get_files prohibit_select_bli_bels_for_hold.tcl] [current_project]
 
 validate_bd_design
 save_bd_design

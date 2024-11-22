@@ -873,6 +873,18 @@ proc create_dfx {} {
     LPDDR_2 {{0x50000000000 8G}} \
     LPDDR_3 {{0x50000000000 8G}} \
     PL_CTRL_S_AXI {{0xA7000000 144M}}]
+	
+
+  set_property APERTURES { } [get_bd_intf_pins /VitisRegion/AIE_CTRL_INI]
+  set_property APERTURES { {{0x0 2G} {0x8_0000_0000 6G}}} [get_bd_intf_pins /VitisRegion/DDR_0]
+  set_property APERTURES { {{0x0 2G} {0x8_0000_0000 6G}}} [get_bd_intf_pins /VitisRegion/DDR_1]
+  set_property APERTURES { {{0x0 2G} {0x8_0000_0000 6G}}} [get_bd_intf_pins /VitisRegion/DDR_2]
+  set_property APERTURES { {{0x0 2G} {0x8_0000_0000 6G}}} [get_bd_intf_pins /VitisRegion/DDR_3]
+  set_property APERTURES { {{0x500_0000_0000 8G}}} [get_bd_intf_pins /VitisRegion/LPDDR_0]
+  set_property APERTURES { {{0x500_0000_0000 8G}}} [get_bd_intf_pins /VitisRegion/LPDDR_1]
+  set_property APERTURES { {{0x500_0000_0000 8G}}} [get_bd_intf_pins /VitisRegion/LPDDR_2]
+  set_property APERTURES { {{0x500_0000_0000 8G}}} [get_bd_intf_pins /VitisRegion/LPDDR_3]
+  set_property APERTURES { {{0xA700_0000 144M}}} [get_bd_intf_pins /VitisRegion/PL_CTRL_S_AXI]	
 
   current_bd_design [get_bd_designs VitisRegion]
   foreach {intf aperture} ${intfApertureSet} {

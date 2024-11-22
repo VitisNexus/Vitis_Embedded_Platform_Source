@@ -11,6 +11,7 @@ include $(TOP_DIR)/platform.mk
 SYSTEM_USER_DTSI = $(CWD)/user_dts/system-user.dtsi
 #SYSTEM_CONF_DTS  = $(CWD)/user_dts/system-conf.dtsi
 PDI_FILE         = $(SW_DIR)/hw.pdi
+DTB_PATH         = $(CWD)/dtb_gen
 
 .PHONY: check-vitis check-prebuilt all sw_comp dtb bootimage clean
 
@@ -22,14 +23,12 @@ dtb: $(DTB_FILE)
 $(DTB_FILE): check-vitis $(XSA)
 	$(info "Generating SW Artifacts...")
 	@if [ ! -d $(BOOT_DIR) ]; then mkdir -p $(BOOT_DIR); fi
-	@mkdir -p $(SW_DIR)/tmp
-	$(info "DTB generation started using XSCT")
-	$(info $(XSCT) -eval "createdts -hw $(XSA) -git-url https://github.com/Xilinx/device-tree-xlnx.git -git-branch xlnx_rel_v2024.1 -board $(BOARD) -platform $(PLATFORM) -zocl -out $(SW_DIR)/tmp -dtsi $(SYSTEM_USER_DTSI) -compile")
-	@$(XSCT) -eval "createdts -hw $(XSA) -git-url https://github.com/Xilinx/device-tree-xlnx.git -git-branch xlnx_rel_v2024.1 -board $(BOARD) -platform $(PLATFORM) -zocl -out $(SW_DIR)/tmp -dtsi $(SYSTEM_USER_DTSI) -compile"
-	$(eval BSP_PATH = $(SW_DIR)/tmp/$(PLATFORM)/$(CORE)/device_tree_domain/bsp/)
-	@if [ ! -f $(BSP_PATH)/system.dtb ]; then echo -e "ERROR: Device tree generation failed\n"; exit 1; fi
-	cp $(BSP_PATH)/system.dtb $(DTB_FILE) -v
-	@rm -rf $(SW_DIR)/tmp
+	$(info "DTB generation started using stdgen+lopper")
+
+	$(MAKE) -C dtb_gen all
+
+	@if [ ! -f  $(DTB_PATH)/system.dtb ]; then echo -e "ERROR: Device tree generation failed\n"; exit 1; fi
+	cp $(DTB_PATH)/system.dtb $(DTB_FILE) -v
 
 sw_comp: $(SW_FILES)
 
@@ -54,3 +53,6 @@ $(BOOT_IMAGE): $(PDI_FILE) $(SW_FILES)
 
 clean:
 	${RM} -r $(SW_DIR)
+	${RM} -r $(PLATFORM_DIR)
+	$(MAKE) -C dtb_gen clean ;
+

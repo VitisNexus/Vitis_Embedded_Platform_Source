@@ -1,6 +1,6 @@
 # Vitis Base Platform for the VMK180 Board
 
-***Version: 2024.1***
+***Version: 2024.2***
 
 This platform comes with common hardware features on the VMK180 board like GEM and PS DDR4. The platform software includes OpenCV in PetaLinux. It is useful as a base platform for exercising Vitis capabilities and topologies on the VMK180 board.
 
@@ -10,9 +10,9 @@ This platform comes with common hardware features on the VMK180 board like GEM a
 
 | Type              | Value                       |
 | ----------------- | --------------------------- |
-| Release Version   | xilinx_vmk180_base_202410_1 |
-| Vitis version     | 2024.1                      |
-| XRT Tag version   | [202410.2.17.0_PetaLinux](https://github.com/Xilinx/XRT/releases/tag/202410.2.17.0_Petalinux)     |
+| Release Version   | xilinx_vmk180_base_202420_1 |
+| Vitis version     | 2024.2                      |
+| XRT Tag version   | [202420.2.18.0_PetaLinux](https://github.com/Xilinx/XRT/releases/tag/202420.2.18.0_Petalinux)      |
 | Target board      | VMK180                      |
 
 ### Interfaces

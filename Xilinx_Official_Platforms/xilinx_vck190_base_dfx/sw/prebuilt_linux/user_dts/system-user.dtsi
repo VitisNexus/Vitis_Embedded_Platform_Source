@@ -34,6 +34,7 @@
         };  
 };
 
+
 &amba_pl {	ai_engine@20000000000 {
 		#address-cells = <0x02>;
 		#size-cells = <0x02>;

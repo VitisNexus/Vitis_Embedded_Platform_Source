@@ -52,9 +52,9 @@ set_property platform.extensible true [current_project]
 
 set_property PFM_NAME "xilinx.com:xd:${PLATFORM_NAME}:${VER}" [get_files VitisRegion.bd]
 
-#Importing Placement Files
-import_files -fileset utils_1 -norecurse ./../data/qor_scripts/prohibit_select_bli_bels_for_hold.tcl
-set_property platform.run.steps.place_design.tcl.pre [get_files prohibit_select_bli_bels_for_hold.tcl] [current_project]
+#Importing Placement Files,  removing it as got fixed with VIVADO-6557
+#import_files -fileset utils_1 -norecurse ./../data/qor_scripts/prohibit_select_bli_bels_for_hold.tcl
+#set_property platform.run.steps.place_design.tcl.pre [get_files prohibit_select_bli_bels_for_hold.tcl] [current_project]
 import_files -fileset constrs_1 -norecurse ./../data/pblock.xdc
 
 validate_bd_design

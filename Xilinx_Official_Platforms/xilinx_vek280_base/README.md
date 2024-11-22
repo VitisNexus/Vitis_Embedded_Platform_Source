@@ -1,6 +1,6 @@
-# Vitis Base Platform for the VEK280 ES1 Board
+# Vitis Base Platform for the VEK280 Board
 
-***Version: 2024.1***
+***Version: 2024.2***
 
 This platform comes with PetaLinux sources and includes OpenCV. It is useful as a base platform for exercising Vitis capabilities and topologies on the vek280 board.
 
@@ -15,7 +15,7 @@ Docker container).
 After cloning the platform source, and with Vivado set up, run `make` command
 with appropriate flags from the top-level platform directory.
 
-Note that by default this Makefile will install the platform to "platform_repo/xilinx_vek280_base_202410_1/export/xilinx_vek280_base_202410_1/"
+Note that by default this Makefile will install the platform to "platform_repo/xilinx_vek280_base_202420_1/export/xilinx_vek280_base_202420_1/"
 
 ## Platform Specification
 
@@ -24,7 +24,7 @@ Note that by default this Makefile will install the platform to "platform_repo/x
 | Type              | Value                           |
 | ----------------- | ---------------------------     |
 | Release Version   | xilinx_vek280_base_202341
-| XRT Tag version   | [202410.2.17.0_PetaLinux](https://github.com/Xilinx/XRT/releases/tag/202410.2.17.0_Petalinux)              |
+| XRT Tag version   | [202420.2.18.0_PetaLinux](https://github.com/Xilinx/XRT/releases/tag/202420.2.18.0_Petalinux)              |
 | Target board      | VEK280                          |
 
 ### Interfaces
@@ -49,7 +49,7 @@ Note that by default this Makefile will install the platform to "platform_repo/x
 
 ### Software Configurations
 
-The software configurations are based on [vek280-es1 BSP](https://www.author.xilinx.com/products/boards-and-kits/vek280.html#tools). Here is the list of additional configurations.
+The software configurations are based on [vek280 BSP](https://www.author.xilinx.com/products/boards-and-kits/vek280.html#tools). Here is the list of additional configurations.
 
 | Configuration                    | Values                                                       | Details |
 | -------------------------------- | ------------------------------------------------------------ | ------- |
