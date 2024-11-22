@@ -9,8 +9,8 @@ platforms][3].
 To build the Vitis embedded platforms from source code in this repository, you will need to have the following tools installed and follow the [build instructions](#build-instructions):
 
 - A Linux-based host OS supported by Vitis
-- [Vitis][1] 2023.2
-- [Common Software Image](#installing-the-common-software) 2023.2
+- [Vitis][1] 
+- [Common Software Image](#installing-the-common-software) 
 
 [1]: https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis.html
 
@@ -33,13 +33,13 @@ This repository is divided into two sections:
   Vitis environment need to be setup before building the platform.
 
   ```bash
-  source <Vitis_install_path>/Vitis/2023.2/settings64.sh
+  source <Vitis_install_path>/settings64.sh
   ```
   This package comes with sources to generate the Vitis platform with these steps:
 
   1. Generate hardware specification file (XSA) using Vivado.
-  2. Generate software components of platform (using XSCT).
-  3. Generate the Vitis platform by packaging hardware and software together using XSCT tool
+  2. Generate software components of platform.
+  3. Generate the Vitis platform by packaging hardware and software together.
 
 
 The following table summarizes use cases of platforms build :
@@ -71,7 +71,7 @@ There are two methods to prepare the platform software.
 
 The Flags used in commands of above table are explained below :
 
-- *PREBUILT_LINUX_PATH*: By default, this flag is set to /opt/xilinx/platform/xilinx-<arch>-common-<ver>. If platform needs to be build using package located at another directory then provide the pre-built Linux image path to this flag. The build flow will generate device tree from XSA and run platform package with the pre-built Linux image. Common Linux components are provided as pre-built binaries by Xilinx to fullfill most evaluation requirements. Please refer to [UG1393- Using Embedded Platforms chapter][3] for more information. Set this flag to point common software components(u-boot, boot.scr, bl31.elf). These files are architecture specific. Zynq, zynqMP and Versal have different software component files.
+- *PREBUILT_LINUX_PATH*: By default, this flag is set to /opt/xilinx/platform/xilinx-<arch>-common-<ver>. If platform needs to be build using package located at another directory then provide the pre-built Linux image path to this flag. The build flow will generate device tree from XSA and run platform package with the pre-built Linux image. Common Linux components are provided as pre-built binaries by Xilinx to fullfill most evaluation requirements. Please refer to [UG1701- Using Embedded Platforms chapter][3] for more information. Set this flag to point common software components(u-boot, boot.scr, bl31.elf). These files are architecture specific. Zynq, zynqMP and Versal have different software component files.
 
     ```bash
     make all
@@ -81,7 +81,7 @@ The Flags used in commands of above table are explained below :
     # This dir should contain u-boot.elf, boot.scr and bl31.elf
     ```
 
-[3]: https://www.xilinx.com/cgi-bin/docs/rdoc?t=vitis+doc;v=latest;d=usingembeddedplatforms.html;a=mym1591997179666
+[3]: https://docs.amd.com/r/en-US/ug1701-vitis-accelerated-embedded/Creating-and-Using-Vitis-Platforms
 
 - *PRE_SYNTH*: This flag is used to specify XSA type that needs to be built. The default value is `TRUE`, which means pre-synth XSA is generated. To generate post-impl XSA, set this variable to `FALSE`. The build flow will run through implementation in Vivado and include implementation results to the post-impl XSA.
 
